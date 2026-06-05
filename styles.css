@@ -314,6 +314,7 @@
   .project-link:hover { opacity: 0.7; }
   .project-link.muted { color: var(--ink-muted); }
   .project-link svg { width: 13px; height: 13px; }
+  .app-name{ color: #4f46e5}
 
   /* CONTACT */
   #contact { background: var(--white); }
