@@ -319,7 +319,7 @@
             <label for="message">Message</label>
             <textarea id="message" placeholder="Tell me about the role or project..."></textarea>
           </div>
-          <button class="btn btn-primary" style="align-self:flex-start" onclick="alert('Thanks for reaching out! (Connect this to a form service like Formspree or EmailJS)')">Send message →</button>
+         <button class="btn btn-primary" style="align-self:flex-start" onclick="sendMessage()">Send message →</button>
         </div>
       </div>
     </div>
@@ -329,6 +329,27 @@
 <footer>
   Built by <span>Maryam Banjo</span> · Dublin, Ireland · 2026
 </footer>
+<script>
+async function sendMessage() {
+  const data = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value
+  };
 
+  const res = await fetch('https://formspree.io/f/mykazaqk', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+
+  if (res.ok) {
+    alert('Message sent! I will get back to you soon.');
+  } else {
+    alert('Something went wrong. Please email me directly.');
+  }
+}
+</script>
 </body>
 </html>
